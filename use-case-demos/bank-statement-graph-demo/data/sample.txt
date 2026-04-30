@@ -1,3 +1,0 @@
-Alice is 25 years old.
-Coco is 67 years old.
-Baby is 21 years old.
