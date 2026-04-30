@@ -26,68 +26,70 @@ The result is an interactive system where users can explore financial data witho
 
 ```bash
 pip install cocoindex psycopg[binary] python-dotenv openai pypdf
-
-
-## Quickstart
-
-Create a.env file:
-
-(1) Prepare environment variables
-
 ```
+
+---
+
+## 🚀 Quickstart
+
+### (1) Prepare environment variables
+
+Create a `.env` file with the following variables:
+
+```env
 OPENAI_API_KEY=your_openai_key
 POSTGRES_DSN=your_dsn_url
 POSTGRES_SCHEMA=public
 COCOINDEX_DATABASE_URL=your_database_url
 ```
 
+### (2) Add your PDF data
 
-(2) Add your PDF data
 Place bank statement PDFs in:
 
 ```
 bank_data/
 ```
 
-(3) Run the data pipeline
+### (3) Run the data pipeline
 
-```
+```bash
 python coco_main.py
 ```
 
 This will:
-	•	Extract structured data from PDFs
-	•	Generate JSON output
-	•	Insert data into PostgreSQL tables
+- Extract structured data from PDFs
+- Generate JSON output
+- Insert data into PostgreSQL tables
 
-Tables created:
-	•	accounts
-	•	statements
-	•	transactions
+**Tables created:**
+- `accounts`
+- `statements`
+- `transactions`
 
-## Deployment
+---
 
-Open PuppyGraph
+## 🚀 Deployment
 
-Go to:
+### Open PuppyGraph
+
+Navigate to:
 
 ```
 http://localhost:8081
 ```
 
-Then
+Upload your `schema.json` file in the PuppyGraph interface.
 
-Upload your schema.json in
+---
 
-## Graph Model
+## 📊 Graph Model
 
 ```
 (Account) ──OwnsStatement──> (Statement) ──HasTransaction──> (Transaction)
 ```
 
-	•	Account → bank account holder
-	•	Statement → PDF statement
-	•	Transaction → individual transaction row
-
-
-
+**Entity Descriptions:**
+- **Account** → Bank account holder
+- **Statement** → PDF statement document
+- **Transaction** → Individual transaction record
