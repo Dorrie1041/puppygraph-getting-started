@@ -1,0 +1,377 @@
+Last login: Tue Apr 21 15:01:32 on ttys000
+dongruishen@Dongruis-MacBook-Pro ~ % cd Desktop/PuppyGraph 
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % code 
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % code .
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % docker ps
+CONTAINER ID   IMAGE                    COMMAND                  CREATED      STATUS          PORTS                                         NAMES
+414d62d71d0a   pgvector/pgvector:pg17   "docker-entrypoint.s…"   7 days ago   Up 10 minutes   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp   cocoindex-postgres-postgres-1
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % docker exec -it cocoindex-postgres-postgres-1 psql -U cocoindex -d cocoindex
+psql (17.9 (Debian 17.9-1.pgdg12+1))
+Type "help" for help.
+
+cocoindex=# \dn
+      List of schemas
+  Name  |       Owner       
+--------+-------------------
+ public | pg_database_owner
+(1 row)
+
+cocoindex=# \dt public.*
+                            List of relations
+ Schema |                    Name                    | Type  |   Owner   
+--------+--------------------------------------------+-------+-----------
+ public | accounts                                   | table | cocoindex
+ public | bank_statement_flow__cocoindex_tracking    | table | cocoindex
+ public | bank_statement_flow_v2__cocoindex_tracking | table | cocoindex
+ public | cocoindex_setup_metadata                   | table | cocoindex
+ public | statements                                 | table | cocoindex
+ public | transactions                               | table | cocoindex
+(6 rows)
+
+cocoindex=# select * from public.accounts;
+cocoindex=# select * from public.accounts;
+cocoindex=# \q
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % docker ps     
+CONTAINER ID   IMAGE                    COMMAND                  CREATED      STATUS          PORTS                                         NAMES
+414d62d71d0a   pgvector/pgvector:pg17   "docker-entrypoint.s…"   7 days ago   Up 18 minutes   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp   cocoindex-postgres-postgres-1
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % docker inspect cocoindex-postgres-postgres-1
+[
+    {
+        "Id": "414d62d71d0a26a11e8e1791f052841aaa5268c4de1acb84d47fd05c0c4cf293",
+        "Created": "2026-04-14T18:33:13.320798676Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "postgres"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 557,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-04-22T17:12:32.631388792Z",
+            "FinishedAt": "2026-04-21T23:44:20.756782304Z"
+        },
+        "Image": "sha256:494dff7e67e7bc2c826b94c331364978d145ebb86fd338154138b084223b7f67",
+        "ResolvConfPath": "/var/lib/docker/containers/414d62d71d0a26a11e8e1791f052841aaa5268c4de1acb84d47fd05c0c4cf293/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/414d62d71d0a26a11e8e1791f052841aaa5268c4de1acb84d47fd05c0c4cf293/hostname",
+        "HostsPath": "/var/lib/docker/containers/414d62d71d0a26a11e8e1791f052841aaa5268c4de1acb84d47fd05c0c4cf293/hosts",
+        "LogPath": "/var/lib/docker/containers/414d62d71d0a26a11e8e1791f052841aaa5268c4de1acb84d47fd05c0c4cf293/414d62d71d0a26a11e8e1791f052841aaa5268c4de1acb84d47fd05c0c4cf293-json.log",
+        "Name": "/cocoindex-postgres-postgres-1",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "cocoindex-postgres_default",
+            "PortBindings": {
+                "5432/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "5432"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "always",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "28ac7a4017d5043059a0bf03bf5ef5cc16a547f07e045881cfa1891425db621f",
+                "Source": "/var/lib/docker/volumes/28ac7a4017d5043059a0bf03bf5ef5cc16a547f07e045881cfa1891425db621f/_data",
+                "Destination": "/var/lib/postgresql/data",
+                "Driver": "local",
+                "Mode": "",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "414d62d71d0a",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "5432/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "POSTGRES_DB=cocoindex",
+                "POSTGRES_PASSWORD=cocoindex",
+                "POSTGRES_USER=cocoindex",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/17/bin",
+                "GOSU_VERSION=1.19",
+                "LANG=en_US.utf8",
+                "PG_MAJOR=17",
+                "PG_VERSION=17.9-1.pgdg12+1",
+                "PGDATA=/var/lib/postgresql/data"
+            ],
+            "Cmd": [
+                "postgres"
+            ],
+            "Image": "pgvector/pgvector:pg17",
+            "Volumes": {
+                "/var/lib/postgresql/data": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "Labels": {
+                "com.docker.compose.config-hash": "08fdbd23f3b236281fc79842aadc9f88e7550c02fff96357514b22ec3b178251",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:494dff7e67e7bc2c826b94c331364978d145ebb86fd338154138b084223b7f67",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "cocoindex-postgres",
+                "com.docker.compose.project.config_files": "/dev/fd/11",
+                "com.docker.compose.project.working_dir": "/dev/fd",
+                "com.docker.compose.service": "postgres",
+                "com.docker.compose.version": "5.1.0"
+            },
+            "StopSignal": "SIGINT",
+            "StopTimeout": 1
+        },
+        "NetworkSettings": {
+            "SandboxID": "20477c27d24dce6fa40db79f8c36f86124a05f7994135629109fca72d5e8cb07",
+            "SandboxKey": "/var/run/docker/netns/20477c27d24d",
+            "Ports": {
+                "5432/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "5432"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "5432"
+                    }
+                ]
+            },
+            "Networks": {
+                "cocoindex-postgres_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "cocoindex-postgres-postgres-1",
+                        "postgres"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "a9667a70e79de7caa11e9659ca6efb4e585dc0fe7f382b400b33994a4996c678",
+                    "EndpointID": "f44d887b4eba85cbd42c5799ff92d0a86b69e7115b3ef508a19fc5d629182903",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.2",
+                    "MacAddress": "b2:74:d2:9a:00:fa",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "cocoindex-postgres-postgres-1",
+                        "postgres",
+                        "414d62d71d0a"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:ce2a96a036f9f1385db1066e4f89d6b24d3baad051a60bd7e8d60783e1bf3e78",
+            "size": 3337,
+            "platform": {
+                "architecture": "arm64",
+                "os": "linux"
+            }
+        }
+    }
+]
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % docker ps
+CONTAINER ID   IMAGE                          COMMAND                  CREATED       STATUS          PORTS                                                                                                                                   NAMES
+414d62d71d0a   pgvector/pgvector:pg17         "docker-entrypoint.s…"   7 days ago    Up 28 minutes   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp                                                                                             cocoindex-postgres-postgres-1
+140b6609d627   puppygraph/puppygraph:stable   "bash ./entrypoint.sh"   4 weeks ago   Up 6 minutes    0.0.0.0:7687->7687/tcp, [::]:7687->7687/tcp, 0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp, 0.0.0.0:8182->8182/tcp, [::]:8182->8182/tcp   puppy
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % docker inspect puppy --format '{{json .NetworkSettings.Networks}}'
+docker inspect cocoindex-postgres-postgres-1 --format '{{json .NetworkSettings.Networks}}'
+{"bridge":{"IPAMConfig":null,"Links":null,"Aliases":null,"DriverOpts":null,"GwPriority":0,"NetworkID":"4dd8d1cabf26a1c58b0646e97861b5bfa539dbbe8ee4d1725947a085a7f8b32d","EndpointID":"db053e694a7e5e18a578f45efe67cb906d8dc7671c2d0f588a45f7d36f85907e","Gateway":"172.17.0.1","IPAddress":"172.17.0.2","MacAddress":"ae:0b:d2:40:d6:56","IPPrefixLen":16,"IPv6Gateway":"","GlobalIPv6Address":"","GlobalIPv6PrefixLen":0,"DNSNames":null}}
+{"cocoindex-postgres_default":{"IPAMConfig":null,"Links":null,"Aliases":["cocoindex-postgres-postgres-1","postgres"],"DriverOpts":null,"GwPriority":0,"NetworkID":"a9667a70e79de7caa11e9659ca6efb4e585dc0fe7f382b400b33994a4996c678","EndpointID":"f44d887b4eba85cbd42c5799ff92d0a86b69e7115b3ef508a19fc5d629182903","Gateway":"172.18.0.1","IPAddress":"172.18.0.2","MacAddress":"b2:74:d2:9a:00:fa","IPPrefixLen":16,"IPv6Gateway":"","GlobalIPv6Address":"","GlobalIPv6PrefixLen":0,"DNSNames":["cocoindex-postgres-postgres-1","postgres","414d62d71d0a"]}}
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % docker exec -it puppy bash
+puppy@140b6609d627:/home/ubuntu$ ping cocoindex-postgres-postgres-1
+bash: ping: command not found
+puppy@140b6609d627:/home/ubuntu$ getent hosts cocoindex-postgres-postgres-1
+puppy@140b6609d627:/home/ubuntu$ python -c "import socket; s=socket.socket(); s.settimeout(5); s.connect(('cocoindex-postgres-postgres-1', 5432)); print('ok')"
+bash: python: command not found
+puppy@140b6609d627:/home/ubuntu$ \q
+bash: q: command not found
+puppy@140b6609d627:/home/ubuntu$ ^C
+puppy@140b6609d627:/home/ubuntu$ ^C 
+puppy@140b6609d627:/home/ubuntu$ exit
+exit
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % docker network connect cocoindex-postgres_default puppy
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % docker exec -it puppy bash
+puppy@140b6609d627:/home/ubuntu$ getent hosts cocoindex-postgres-postgres-1
+172.18.0.2      cocoindex-postgres-postgres-1
+puppy@140b6609d627:/home/ubuntu$ exit
+exit
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % python3 -c "import socket; s=socket.socket(); s.settimeout(5); s.connect(('cocoindex-postgres-postgres-1', 5432)); print('ok')"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import socket; s=socket.socket(); s.settimeout(5); s.connect(('cocoindex-postgres-postgres-1', 5432)); print('ok')
+                                                       ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % docker exec -it cocoindex-postgres-postgres-1 psql -U cocoindex -d cocoindex
+psql (17.9 (Debian 17.9-1.pgdg12+1))
+Type "help" for help.
+
+cocoindex=# \dt public.*
+                            List of relations
+ Schema |                    Name                    | Type  |   Owner   
+--------+--------------------------------------------+-------+-----------
+ public | accounts                                   | table | cocoindex
+ public | bank_statement_flow__cocoindex_tracking    | table | cocoindex
+ public | bank_statement_flow_v2__cocoindex_tracking | table | cocoindex
+ public | cocoindex_setup_metadata                   | table | cocoindex
+ public | statements                                 | table | cocoindex
+ public | transactions                               | table | cocoindex
+(6 rows)
+
+cocoindex=# ALTER TABLE public.transactions
+ADD COLUMN account_id TEXT,
+ADD COLUMN filename TEXT;
+ALTER TABLE
+cocoindex=# UPDATE public.transactions t
+SET
+    account_id = s.account_id,
+    filename = s.filename
+FROM public.statements s
+WHERE t.statement_id = s.statement_id;
+UPDATE 79
+cocoindex=# \q
+dongruishen@Dongruis-MacBook-Pro PuppyGraph % >....                                                      
+        withdrawals,
+        deposits,
+        balance,
+        raw_json
+    )
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s::jsonb);
+    """,
+    (
+        transaction_id,
+        statement_id,
+        account_id,
+        filename,
+        idx,
+        clean_text(tx.get("date_processed")),
+        clean_text(tx.get("date_of_transaction")),
+        clean_text(tx.get("card_id")),
+        clean_text(tx.get("details")),
+        parse_money(tx.get("withdrawals")),
+        parse_money(tx.get("deposits")),
+        parse_money(tx.get("balance")),
+        json.dumps(tx, ensure_ascii=False),
+    ),
+)
